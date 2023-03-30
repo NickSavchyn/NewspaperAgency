@@ -35,6 +35,23 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:topic-list")
+
+
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:topic-list")
+
+
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("newspaper_agency:topic-list")
+
+
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     paginate_by = 5
@@ -43,6 +60,23 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
 
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:newspaper-list")
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:newspaper-list")
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("newspaper_agency:newspaper-list")
 
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):
@@ -55,4 +89,18 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Redactor.objects.all().prefetch_related("newspapers__topic")
 
 
+class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Redactor
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:redactor-list")
 
+
+class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Redactor
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper_agency:redactor-list")
+
+
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("newspaper_agency:redactor-list")
