@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="display-4 mb-4">Taxi Service Home</h1>
-    <p class="lead">Welcome to Best Taxi Ever!</p>
-    <h2 class="mt-5">Dynamic content</h2>
-    <p>The Taxi service has the following record counts:</p>
+    <h1 class="display-4 mb-4 text-primary">Newspaper agency "News4All"</h1>
+    <p class="lead text-secondary">Welcome to the best newspaper website!</p>
+    <p class="text-info">Our agency provides the following:</p>
     <ul class="list-group mb-4">
-        <li class="list-group-item"><strong>Cars:</strong> {{ num_cars }}</li>
-        <li class="list-group-item"><strong>Drivers:</strong> {{ num_drivers }}</li>
-        <li class="list-group-item"><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
+        <li class="list-group-item"><strong class="text-danger">Newspapers:</strong> {{ num_newspapers }}</li>
+        <li class="list-group-item"><strong class="text-danger">Redactors:</strong> {{ num_redactors }}</li>
+        <li class="list-group-item"><strong class="text-danger">Topics:</strong> {{ num_topics }}</li>
     </ul>
 
-    <p class="text-muted mb-0">You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+    <p class="text-muted mb-0">You have visited this page <span class="text-warning">{{ num_visits }}</span> time{{ num_visits|pluralize }}.</p>
 {% endblock %}
