@@ -16,7 +16,7 @@ def index(request):
     new_redactors = Redactor.objects.count()
 
     num_visits = request.session.get("num_visits", 0)
-    request.sesion["num_visits"] = num_visits + 1
+    request.session["num_visits"] = num_visits + 1
 
     context = {
         "num_topics": num_topics,
