@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from newspaper_agency.forms import RedactorCreationForm, RedactorUpdateForm, NewspaperForm
 from newspaper_agency.models import Topic, Newspaper, Redactor
 
 
@@ -31,7 +32,7 @@ def index(request):
 class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     context_object_name = "topic_list"
-    template_name = "newspaper_agency:topic_list.html"
+    template_name = "newspaper-agency:topic_list.html"
     paginate_by = 5
 
 
@@ -64,13 +65,13 @@ class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
     model = Newspaper
-    fields = "__all__"
+    form_class = NewspaperForm
     success_url = reverse_lazy("newspaper_agency:newspaper-list")
 
 
 class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
-    fields = "__all__"
+    form_class = NewspaperForm
     success_url = reverse_lazy("newspaper_agency:newspaper-list")
 
 
@@ -91,13 +92,13 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
 
 class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     model = Redactor
-    fields = "__all__"
+    form_class = RedactorCreationForm
     success_url = reverse_lazy("newspaper_agency:redactor-list")
 
 
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
-    fields = "__all__"
+    form_class = RedactorUpdateForm
     success_url = reverse_lazy("newspaper_agency:redactor-list")
 
 
